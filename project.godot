@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Nowy Projekt Gry"
-config/icon="res://icon.png"
+config/name="Save the Jar"
+config/icon="res://Assets/icon.png"
 
 [gui]
 
