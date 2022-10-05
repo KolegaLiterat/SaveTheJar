@@ -14,9 +14,9 @@
 [node name="Board" parent="." instance=ExtResource( 1 )]
 
 [node name="Potions" type="Node2D" parent="."]
+visible = false
 
 [node name="Potion0" parent="Potions" instance=ExtResource( 8 )]
-position = Vector2( 467, 943 )
 
 [node name="Potion1" parent="Potions" instance=ExtResource( 5 )]
 
