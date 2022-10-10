@@ -10,8 +10,6 @@ func _ready():
 	else:
 		BoardTiles = get_all_board_tiles()
 		
-		print(BoardTiles)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

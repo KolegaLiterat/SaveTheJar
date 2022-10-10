@@ -1,14 +1,10 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
+onready var BoardTiles : Array = get_node("Board").BoardTiles
+onready var Potions : Array = get_node("Potions").Potions
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print(Potions)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
