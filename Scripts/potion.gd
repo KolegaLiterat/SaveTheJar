@@ -15,3 +15,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _on_RigidBody2D_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+	   print("Mouse Click/Unclick at: ", event.position)

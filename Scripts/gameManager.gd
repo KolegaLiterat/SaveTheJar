@@ -15,7 +15,7 @@ func _ready():
 	SpawnedPotions = get_tree().get_nodes_in_group(SpawnedPotionsGroup)
 
 func _process(_delta):
-	print(SpawnedPotions.size())
+	pass
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
