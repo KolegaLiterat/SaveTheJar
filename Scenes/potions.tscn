@@ -13,15 +13,22 @@
 script = ExtResource( 8 )
 
 [node name="Potion0" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="Potion1" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="Potion2" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="Potion3" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="Potion4" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="Potion5" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="Potion6" parent="." instance=ExtResource( 4 )]
+visible = false

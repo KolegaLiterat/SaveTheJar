@@ -5,4 +5,4 @@
 [node name="Potion5" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
-region_rect = Rect2( 306, 290, 14, 14 )
+region_rect = Rect2( 338, 290, 14, 14 )
