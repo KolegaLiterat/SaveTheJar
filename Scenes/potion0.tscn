@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/gameItems.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/potion.gd" type="Script" id=2]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28, 28 )
+
 [node name="Potion0" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true

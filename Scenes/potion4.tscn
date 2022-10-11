@@ -4,5 +4,5 @@
 
 [node name="Potion4" instance=ExtResource( 1 )]
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="RigidBody2D" index="1"]
 region_rect = Rect2( 306, 290, 14, 14 )
