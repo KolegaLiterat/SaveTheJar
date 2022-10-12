@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/gameItems.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/potion.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Animated Selector/1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Animated Selector/0.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Selected",
+"speed": 5.0
+} ]
 
 [node name="Potion0" type="Node2D"]
 script = ExtResource( 2 )
@@ -21,5 +31,12 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 242, 290, 14, 14 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="RigidBody2D"]
+visible = false
+position = Vector2( -0.499997, 2.14577e-06 )
+scale = Vector2( 3.16667, 3.11111 )
+frames = SubResource( 2 )
+animation = "Selected"
 
 [connection signal="input_event" from="RigidBody2D" to="." method="_on_RigidBody2D_input_event"]
