@@ -14,10 +14,12 @@ var SelectedPotions : Array = []
 func _ready():
 	spawn_potions_on_board()
 	SpawnedPotions = get_tree().get_nodes_in_group(SpawnedPotionsGroup)
-
+	
+	if !validate_spawn_potions_count():
+		print("Missing spawned potions! Check potions scence!")
+	
 func _process(_delta):
-	if len(SpawnedPotions) > 0:
-		find_selected_potions()
+	find_selected_potions()
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -32,3 +34,11 @@ func find_selected_potions():
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
 			print(potion.name)
+			
+func validate_spawn_potions_count() -> bool:
+	var are_potions_spawned : bool = false
+	
+	if SpawnedPotions.size() > 0:
+		are_potions_spawned = true
+		
+	return are_potions_spawned
