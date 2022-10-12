@@ -9,13 +9,15 @@ var SpawnedPotionsGroup : String = "Spawned Potions"
 
 #Arrays of instances
 var SpawnedPotions : Array = []
+var SelectedPotions : Array = []
 
 func _ready():
 	spawn_potions_on_board()
 	SpawnedPotions = get_tree().get_nodes_in_group(SpawnedPotionsGroup)
 
 func _process(_delta):
-	pass
+	if len(SpawnedPotions) > 0:
+		find_selected_potions()
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -25,3 +27,8 @@ func spawn_potions_on_board():
 		new_potion.add_to_group(SpawnedPotionsGroup)
 		
 		$Potions.add_child(new_potion, true)
+
+func find_selected_potions():
+	for potion in SpawnedPotions:
+		if potion.IsSelected == true:
+			print(potion.name)
