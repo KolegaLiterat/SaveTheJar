@@ -16,5 +16,5 @@ func _ready():
 #	pass
 
 func _on_RigidBody2D_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton:
-	   print("Mouse Click/Unclick at: ", event.position)
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
+	   print(self.name)
