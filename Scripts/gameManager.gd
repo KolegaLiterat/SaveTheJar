@@ -30,11 +30,15 @@ func spawn_potions_on_board():
 		
 		$Potions.add_child(new_potion, true)
 
-func find_selected_potions():
+func find_selected_potions() -> Node:
+	var selected_potion : Node = null
+	
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
-			print(potion.name)
-			
+			selected_potion = potion
+	
+	return selected_potion
+
 func validate_spawn_potions_count() -> bool:
 	var are_potions_spawned : bool = false
 	
@@ -42,3 +46,6 @@ func validate_spawn_potions_count() -> bool:
 		are_potions_spawned = true
 		
 	return are_potions_spawned
+
+func change_potion_selection():
+	pass
