@@ -19,7 +19,8 @@ func _ready():
 		print("Missing spawned potions! Check potions scence!")
 	
 func _process(_delta):
-	find_selected_potions()
+	if find_selected_potions() != null:
+		change_potion_selection(find_selected_potions())
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -47,5 +48,14 @@ func validate_spawn_potions_count() -> bool:
 		
 	return are_potions_spawned
 
-func change_potion_selection():
-	pass
+func change_potion_selection(selected_potion : Node):
+	if SelectedPotions.size() < 2:
+		if SelectedPotions.has(selected_potion) == false:
+			SelectedPotions.append(selected_potion)
+			print(SelectedPotions[0].IsSelected)
+	if SelectedPotions.size() == 2:
+		if SelectedPotions.has(selected_potion) == false:
+			SelectedPotions[0].IsSelected = false
+			SelectedPotions[0].animation_handler()
+			
+			print(SelectedPotions[0].IsSelected)
