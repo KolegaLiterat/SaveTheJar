@@ -19,25 +19,25 @@ animations = [ {
 [node name="Potion0" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Body" type="KinematicBody2D" parent="."]
 input_pickable = true
-mode = 3
-gravity_scale = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+[node name="Sprite" type="Sprite" parent="Body"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 242, 290, 14, 14 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="RigidBody2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Body"]
 visible = false
 position = Vector2( -0.499997, 2.14577e-06 )
 scale = Vector2( 3.16667, 3.11111 )
 frames = SubResource( 2 )
 animation = "Selected"
 
-[connection signal="input_event" from="RigidBody2D" to="." method="_on_RigidBody2D_input_event"]
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="input_event" from="Body" to="." method="_on_Body_input_event"]

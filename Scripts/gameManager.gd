@@ -31,6 +31,7 @@ func _process(_delta):
 		
 		if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
 			print("can be moved")
+			SelectedPotions[0].move_potions()
 
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
