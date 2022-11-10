@@ -21,6 +21,7 @@ script = ExtResource( 2 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 input_pickable = true
+mode = 3
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
