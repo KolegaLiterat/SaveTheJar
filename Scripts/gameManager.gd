@@ -35,6 +35,7 @@ func potions_selection():
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
 			change_potion_selection(potion)
+			remove_unselected_potion()
 
 func validate_spawn_potions_count() -> bool:
 	var are_potions_spawned : bool = false
@@ -54,3 +55,8 @@ func change_potion_selection(selected_potion : Node):
 			SelectedPotions[0].animation_handler()
 			SelectedPotions[0] = SelectedPotions[1]
 			SelectedPotions.remove(1)
+
+func remove_unselected_potion():
+	for potion in SelectedPotions:
+		if potion.IsSelected == false:
+			SelectedPotions.erase(potion)
