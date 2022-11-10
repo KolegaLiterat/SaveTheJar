@@ -34,5 +34,7 @@ func move_potions(new_position : Vector2) -> void:
 		IsMovable = false
 		animation_handler()
 		
-		PotionTween.interpolate_property(self, "position", self.position, new_position, 1, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		PotionTween.interpolate_property(self, "position", 
+										self.position, new_position, 1, 
+										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		PotionTween.start()
