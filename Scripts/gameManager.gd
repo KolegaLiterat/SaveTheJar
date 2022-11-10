@@ -24,20 +24,8 @@ func _ready():
 	
 func _process(_delta):
 	potions_selection()
+	animate_movement()
 	
-	if SelectedPotions.size() == 2:		
-		var x_diff : int = SelectedPotions[0].position.x - SelectedPotions[1].position.x
-		var y_diff : int = SelectedPotions[0].position.y - SelectedPotions[1].position.y
-		
-		if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
-			for potion in SelectedPotions:
-				potion.IsMovable = true
-			
-			SelectedPotions[0].move_potions(SelectedPotions[1].position)
-			SelectedPotions[1].move_potions(SelectedPotions[0].position)
-			
-		remove_unselected_potion()	
-
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
 		var new_potion : Node = Potions[randi() % 6].instance()
@@ -48,7 +36,6 @@ func spawn_potions_on_board():
 		$Potions.add_child(new_potion, true)
 
 func potions_selection():
-	
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
 			change_potion_selection(potion)
@@ -91,3 +78,20 @@ func is_potion_movable(position_diff: int, position_axis: String) -> bool:
 			is_movable = true
 	
 	return is_movable
+
+func animate_movement() -> void:
+	if SelectedPotions.size() == 2:		
+		var x_diff : int = SelectedPotions[0].position.x - SelectedPotions[1].position.x
+		var y_diff : int = SelectedPotions[0].position.y - SelectedPotions[1].position.y
+		
+		set_potions_moveable(x_diff, y_diff)
+		
+		SelectedPotions[0].move_potions(SelectedPotions[1].position)
+		SelectedPotions[1].move_potions(SelectedPotions[0].position)
+			
+		remove_unselected_potion()
+
+func set_potions_moveable(x_diff: int, y_diff: int) -> void:
+	if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
+			for potion in SelectedPotions:
+				potion.IsMovable = true
