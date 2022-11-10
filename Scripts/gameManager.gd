@@ -19,8 +19,7 @@ func _ready():
 		print("Missing spawned potions! Check potions scence!")
 	
 func _process(_delta):
-	if find_selected_potions() != null:
-		change_potion_selection(find_selected_potions())
+	find_selected_potions()
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -31,14 +30,11 @@ func spawn_potions_on_board():
 		
 		$Potions.add_child(new_potion, true)
 
-func find_selected_potions() -> Node:
-	var selected_potion : Node = null
+func find_selected_potions():
 	
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
-			selected_potion = potion
-	
-	return selected_potion
+			change_potion_selection(potion)
 
 func validate_spawn_potions_count() -> bool:
 	var are_potions_spawned : bool = false
@@ -52,10 +48,9 @@ func change_potion_selection(selected_potion : Node):
 	if SelectedPotions.size() < 2:
 		if SelectedPotions.has(selected_potion) == false:
 			SelectedPotions.append(selected_potion)
-			print(SelectedPotions[0].IsSelected)
 	if SelectedPotions.size() == 2:
 		if SelectedPotions.has(selected_potion) == false:
 			SelectedPotions[0].IsSelected = false
 			SelectedPotions[0].animation_handler()
-			
-			print(SelectedPotions[0].IsSelected)
+			SelectedPotions[0] = SelectedPotions[1]
+			SelectedPotions.remove(1)
