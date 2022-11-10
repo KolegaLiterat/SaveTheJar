@@ -1,6 +1,6 @@
 extends Node2D
 
-
+onready var PotionTween = get_node("Tween")
 var IsSelected : bool = false
 var IsMovable : bool = false
 
@@ -28,10 +28,11 @@ func animation_handler() -> void:
 		$Body/AnimatedSprite.hide()
 		$Body/AnimatedSprite.stop()
 
-func move_potions(new_position : Vector2) -> void:
-	var tween = get_node("Tween")
+func move_potions(old_position : Vector2, new_position : Vector2) -> void:
 	if IsMovable:
 		IsSelected = false
+		IsMovable = false
 		animation_handler()
-		tween.interpolate_property(self, "position", self.position, new_position, 3, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		tween.start()
+		
+		PotionTween.interpolate_property(self, "position", old_position, new_position, 1, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		PotionTween.start()

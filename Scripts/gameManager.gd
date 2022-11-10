@@ -33,8 +33,13 @@ func _process(_delta):
 			for potion in SelectedPotions:
 				potion.IsMovable = true
 			
-			SelectedPotions[0].move_potions(SelectedPotions[1].position)
-			SelectedPotions[1].move_potions(SelectedPotions[0].position)
+			var potion_0_position : Vector2 = SelectedPotions[0].position
+			var potion_1_position : Vector2 = SelectedPotions[1].position
+			
+			SelectedPotions[0].move_potions(potion_0_position, potion_1_position)
+			SelectedPotions[1].move_potions(potion_1_position, potion_0_position)
+			
+		remove_unselected_potion()	
 
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
