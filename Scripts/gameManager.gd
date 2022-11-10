@@ -7,6 +7,10 @@ onready var Potions : Array = get_node("Potions").Potions
 #Groups names
 var SpawnedPotionsGroup : String = "Spawned Potions"
 
+#Min Max Values for moveable check
+var MinPosX : int = -80 
+var MinPosY : int = -45
+
 #Arrays of instances
 var SpawnedPotions : Array = []
 var SelectedPotions : Array = []
@@ -21,15 +25,12 @@ func _ready():
 func _process(_delta):
 	potions_selection()
 	
-	if SelectedPotions.size() == 2:
+	if SelectedPotions.size() == 2:		
 		var x_diff : int = SelectedPotions[0].position.x - SelectedPotions[1].position.x
 		var y_diff : int = SelectedPotions[0].position.y - SelectedPotions[1].position.y
 		
 		if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
 			print("can be moved")
-		
-		#print(SelectedPotions[0].position.x - SelectedPotions[1].position.x) #pomiędzy -80 i 80
-		#print(SelectedPotions[0].position.y - SelectedPotions[1].position.y) #pomiędzy -45 i 40
 
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -75,10 +76,12 @@ func is_potion_movable(position_diff: int, position_axis: String) -> bool:
 	var is_movable = false
 	
 	if position_axis == 'x':
-		if position_diff >= -80 and position_diff <= 80:
+		if position_diff >= MinPosX and position_diff <= MinPosX * -1:
+			# x_diff needs to be between -80 and 80
 			is_movable = true
 	elif position_axis == 'y':
-		if position_diff >= -45 and position_diff <= 45:
+		if position_diff >= MinPosY and position_diff <= MinPosY * -1:
+			# y_diff needs to be between -45 and 45
 			is_movable = true
 	
 	return is_movable
