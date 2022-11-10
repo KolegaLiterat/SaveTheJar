@@ -2,6 +2,7 @@ extends Node2D
 
 
 var IsSelected : bool = false
+var IsMovable : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +28,10 @@ func animation_handler() -> void:
 		$Body/AnimatedSprite.hide()
 		$Body/AnimatedSprite.stop()
 
-func move_potions() -> void:
+func move_potions(new_position : Vector2) -> void:
 	var tween = get_node("Tween")
-	print("test")
-	tween.interpolate_property(self, "position", Vector2(100, 100), Vector2(200, 200), 3, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	tween.start()
+	if IsMovable:
+		IsSelected = false
+		animation_handler()
+		tween.interpolate_property(self, "position", self.position, new_position, 3, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.start()

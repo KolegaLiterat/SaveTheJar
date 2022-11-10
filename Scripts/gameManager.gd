@@ -30,8 +30,11 @@ func _process(_delta):
 		var y_diff : int = SelectedPotions[0].position.y - SelectedPotions[1].position.y
 		
 		if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
-			print("can be moved")
-			SelectedPotions[0].move_potions()
+			for potion in SelectedPotions:
+				potion.IsMovable = true
+			
+			SelectedPotions[0].move_potions(SelectedPotions[1].position)
+			SelectedPotions[1].move_potions(SelectedPotions[0].position)
 
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
