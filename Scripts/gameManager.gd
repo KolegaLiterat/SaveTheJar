@@ -19,7 +19,7 @@ func _ready():
 		print("Missing spawned potions! Check potions scence!")
 	
 func _process(_delta):
-	find_selected_potions()
+	potions_selection()
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -30,7 +30,7 @@ func spawn_potions_on_board():
 		
 		$Potions.add_child(new_potion, true)
 
-func find_selected_potions():
+func potions_selection():
 	
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
