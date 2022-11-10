@@ -21,6 +21,16 @@ func _ready():
 func _process(_delta):
 	potions_selection()
 	
+	if SelectedPotions.size() == 2:
+		var x_diff : int = SelectedPotions[0].position.x - SelectedPotions[1].position.x
+		var y_diff : int = SelectedPotions[0].position.y - SelectedPotions[1].position.y
+		
+		if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
+			print("can be moved")
+		
+		#print(SelectedPotions[0].position.x - SelectedPotions[1].position.x) #pomiędzy -80 i 80
+		#print(SelectedPotions[0].position.y - SelectedPotions[1].position.y) #pomiędzy -45 i 40
+
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
 		var new_potion : Node = Potions[randi() % 6].instance()
@@ -60,3 +70,15 @@ func remove_unselected_potion():
 	for potion in SelectedPotions:
 		if potion.IsSelected == false:
 			SelectedPotions.erase(potion)
+
+func is_potion_movable(position_diff: int, position_axis: String) -> bool:
+	var is_movable = false
+	
+	if position_axis == 'x':
+		if position_diff >= -80 and position_diff <= 80:
+			is_movable = true
+	elif position_axis == 'y':
+		if position_diff >= -45 and position_diff <= 45:
+			is_movable = true
+	
+	return is_movable
