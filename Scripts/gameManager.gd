@@ -33,11 +33,8 @@ func _process(_delta):
 			for potion in SelectedPotions:
 				potion.IsMovable = true
 			
-			var potion_0_position : Vector2 = SelectedPotions[0].position
-			var potion_1_position : Vector2 = SelectedPotions[1].position
-			
-			SelectedPotions[0].move_potions(potion_0_position, potion_1_position)
-			SelectedPotions[1].move_potions(potion_1_position, potion_0_position)
+			SelectedPotions[0].move_potions(SelectedPotions[1].position)
+			SelectedPotions[1].move_potions(SelectedPotions[0].position)
 			
 		remove_unselected_potion()	
 
