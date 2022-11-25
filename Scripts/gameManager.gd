@@ -22,6 +22,8 @@ func _ready():
 	if !validate_spawn_potions_count():
 		print("Missing spawned potions! Check potions scence!")
 	
+	$NextPotionTimer.start()
+	
 func _process(_delta):
 	potions_selection()
 	animate_movement()
@@ -95,3 +97,9 @@ func set_potions_moveable(x_diff: int, y_diff: int) -> void:
 	if is_potion_movable(x_diff, 'x') and is_potion_movable(y_diff, 'y'):
 			for potion in SelectedPotions:
 				potion.IsMovable = true
+
+
+func _on_NextPotionTimer_timeout():
+	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
+	
+	
