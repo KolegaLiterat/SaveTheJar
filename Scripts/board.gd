@@ -35,7 +35,6 @@ func get_all_board_tiles() -> Array:
 
 	return board_tiles
 
-
 func _on_Endline_body_entered(body) -> void:
 	body.get_parent().IsRemoveable = true
 

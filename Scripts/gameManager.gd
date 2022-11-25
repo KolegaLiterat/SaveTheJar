@@ -26,6 +26,7 @@ func _ready() -> void:
 		print("Missing spawned potions! Check potions scence!")
 	
 	$NextPotionTimer.start()
+	$NewPotionTimer.start()
 	
 func _process(_delta) -> void:
 	potions_selection()
@@ -42,7 +43,7 @@ func spawn_potions_on_board():
 		$Potions.add_child(new_potion, true)
 
 func potions_selection() -> void:
-	for potion in SpawnedPotions:
+	for potion in SpawnedPotions:	
 		if potion.IsSelected == true:
 			change_potion_selection(potion)
 			remove_unselected_potion()
@@ -129,9 +130,23 @@ func remove_potion_form_board() -> void:
 			
 			Score = Score + 1
 			GUI.set_score(Score)
-			
+
+func add_new_potion():
+	var new_potion : Node = Potions[randi() % 6].instance()
+	var index_for_potion = SpawnedPotions.find(RemovedPotions[0])
+	
+	SpawnedPotions[index_for_potion].show_new_potion(new_potion.get_new_texture_region())
+	
+	RemovedPotions.pop_front()
+	new_potion.queue_free()
+	
 func _on_NextPotionTimer_timeout() -> void:
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
 	
 	if get_number_of_removeable_potions() < 10:
 		set_potion_to_remove()
+
+
+func _on_NewPotionTimer_timeout():
+	if RemovedPotions.size() > 0:
+		add_new_potion()

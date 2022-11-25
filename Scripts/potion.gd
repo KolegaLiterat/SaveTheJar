@@ -53,8 +53,17 @@ func move_potions(new_position : Vector2) -> void:
 		PotionTween.start()
 
 func hide_removable_potion():
-	IsRemoveable = false
 	IsChosenToBeRemoved = false
 	$PotionBody/HealthyPotionSprite.hide()
 	
 	removable_indicator_handler()
+
+func get_new_texture_region() -> Rect2:
+	var new_texture_region : Rect2 = $PotionBody/HealthyPotionSprite.get_region_rect()
+	
+	return new_texture_region
+
+func show_new_potion(new_texture_region: Rect2) -> void:
+	$PotionBody/HealthyPotionSprite.set_region_rect(new_texture_region)
+	$PotionBody/HealthyPotionSprite.show()
+	
