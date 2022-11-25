@@ -20,27 +20,27 @@ animations = [ {
 [node name="Potion0" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Body" type="KinematicBody2D" parent="."]
+[node name="PotionBody" type="KinematicBody2D" parent="."]
 input_pickable = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+[node name="PotionCollision" type="CollisionShape2D" parent="PotionBody"]
 shape = SubResource( 1 )
 one_way_collision = true
 
-[node name="Sprite" type="Sprite" parent="Body"]
+[node name="HealthyPotionSprite" type="Sprite" parent="PotionBody"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 242, 290, 14, 14 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Body"]
+[node name="SelectAnimation" type="AnimatedSprite" parent="PotionBody"]
 visible = false
 position = Vector2( -0.499997, 2.14577e-06 )
 scale = Vector2( 3.16667, 3.11111 )
 frames = SubResource( 2 )
 animation = "Selected"
 
-[node name="Sprite2" type="Sprite" parent="Body"]
+[node name="PotionToRmoveIndicator" type="Sprite" parent="PotionBody"]
 visible = false
 position = Vector2( 0, -45 )
 scale = Vector2( 0.75, 0.75 )
@@ -51,4 +51,4 @@ region_rect = Rect2( 2012, 336, 52, 52 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="input_event" from="Body" to="." method="_on_Body_input_event"]
+[connection signal="input_event" from="PotionBody" to="." method="_on_PotionBody_input_event"]

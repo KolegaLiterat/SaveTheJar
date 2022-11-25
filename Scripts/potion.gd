@@ -14,7 +14,7 @@ func _ready():
 func _process(_delta):
 	pass
 
-func _on_Body_input_event(_viewport, event, _shape_idx) -> void:
+func _on_PotionBody_input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		if IsSelected == false:
 			IsSelected = true
@@ -25,17 +25,17 @@ func _on_Body_input_event(_viewport, event, _shape_idx) -> void:
 
 func animation_handler() -> void:
 	if IsSelected == true:
-		$Body/AnimatedSprite.show()
-		$Body/AnimatedSprite.play()
+		$PotionBody/SelectAnimation.show()
+		$PotionBody/SelectAnimation.play()
 	elif IsSelected == false:
-		$Body/AnimatedSprite.hide()
-		$Body/AnimatedSprite.stop()
+		$PotionBody/SelectAnimation.hide()
+		$PotionBody/SelectAnimation.stop()
 		
 func removable_indicator_handler() -> void:
 	if IsChosenToBeRemoved == true:
-		$Body/Sprite2.show()
+		$PotionBody/PotionToRmoveIndicator.show()
 	elif IsChosenToBeRemoved == false:
-		$Body/Sprite2.hide()
+		$PotionBody/PotionToRmoveIndicator.hide()
 
 func move_potions(new_position : Vector2) -> void:
 	if IsMovable:
