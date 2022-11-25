@@ -27,6 +27,8 @@ window/stretch/aspect="keep"
 [global]
 
 Grupy=false
+czcionka=false
+font=false
 
 [gui]
 

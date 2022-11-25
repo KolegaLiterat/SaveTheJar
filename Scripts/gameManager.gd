@@ -3,7 +3,7 @@ extends Node
 #Load game data
 onready var BoardTiles : Array = get_node("Board").BoardTiles
 onready var Potions : Array = get_node("Potions").Potions
-
+onready var GUI : Control = get_node("GUI")
 #Groups names
 var SpawnedPotionsGroup : String = "Spawned Potions"
 
@@ -121,3 +121,4 @@ func _on_NextPotionTimer_timeout() -> void:
 	
 	if get_number_of_removeable_potions() < 10:
 		set_potion_to_remove()
+		GUI.set_score(4)

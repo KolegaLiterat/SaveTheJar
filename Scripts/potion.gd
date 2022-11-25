@@ -33,7 +33,6 @@ func animation_handler() -> void:
 		$PotionBody/SelectAnimation.stop()
 		
 func removable_indicator_handler() -> void:
-	print("Called")
 	if IsChosenToBeRemoved == true:
 		$PotionBody/PotionToRmoveIndicator.show()
 		$NonSpriteAnimations.play("RemovablePotion")
