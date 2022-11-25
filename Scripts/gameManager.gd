@@ -98,8 +98,18 @@ func set_potions_moveable(x_diff: int, y_diff: int) -> void:
 			for potion in SelectedPotions:
 				potion.IsMovable = true
 
-
+func set_potion_to_remove() -> void:
+	var potion_to_remove = SpawnedPotions[rand_range(0, Potions.size())]
+	
+	print(potion_to_remove)
+	
+	if potion_to_remove.IsRemoveable == true:
+		set_potion_to_remove()
+	else:
+		potion_to_remove.IsChosenToBeRemoved = true
+		potion_to_remove.removable_indicator_handler()
+	
 func _on_NextPotionTimer_timeout():
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
-	
+	set_potion_to_remove()
 	

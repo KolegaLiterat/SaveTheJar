@@ -30,6 +30,12 @@ func animation_handler() -> void:
 	elif IsSelected == false:
 		$Body/AnimatedSprite.hide()
 		$Body/AnimatedSprite.stop()
+		
+func removable_indicator_handler() -> void:
+	if IsChosenToBeRemoved == true:
+		$Body/Sprite2.show()
+	elif IsChosenToBeRemoved == false:
+		$Body/Sprite2.hide()
 
 func move_potions(new_position : Vector2) -> void:
 	if IsMovable:
