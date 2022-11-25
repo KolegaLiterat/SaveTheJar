@@ -184,7 +184,7 @@ __meta__ = {
 [node name="Endline" type="Area2D" parent="."]
 z_index = -5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Endline"]
+[node name="EndlineCollision" type="CollisionShape2D" parent="Endline"]
 position = Vector2( 753, 1039 )
 rotation = 1.09956
 z_as_relative = false
