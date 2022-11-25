@@ -18,6 +18,7 @@ config/icon="res://Assets/icon.png"
 
 window/size/width=1080
 window/size/height=1920
+window/size/fullscreen=true
 window/size/test_width=720
 window/size/test_height=1280
 window/handheld/orientation="portrait"
@@ -29,6 +30,8 @@ window/stretch/aspect="keep"
 Grupy=false
 czcionka=false
 font=false
+roz=false
+resol=false
 
 [gui]
 

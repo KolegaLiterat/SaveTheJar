@@ -4,7 +4,7 @@ func _ready():
 	pass
 
 
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func set_score(score: int):

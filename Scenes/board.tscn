@@ -183,12 +183,18 @@ __meta__ = {
 
 [node name="Endline" type="Area2D" parent="."]
 z_index = -5
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="EndlineCollision" type="CollisionShape2D" parent="Endline"]
 position = Vector2( 788, 1061 )
 rotation = 1.09956
 z_as_relative = false
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="body_entered" from="Endline" to="." method="_on_Endline_body_entered"]
 [connection signal="body_exited" from="Endline" to="." method="_on_Endline_body_exited"]
