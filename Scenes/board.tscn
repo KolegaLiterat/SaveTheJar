@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/board.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 29.7217
+radius = 11.1755
 height = 397.609
 
 [node name="Board" type="Node2D"]
@@ -185,7 +185,7 @@ __meta__ = {
 z_index = -5
 
 [node name="EndlineCollision" type="CollisionShape2D" parent="Endline"]
-position = Vector2( 753, 1039 )
+position = Vector2( 788, 1061 )
 rotation = 1.09956
 z_as_relative = false
 shape = SubResource( 1 )

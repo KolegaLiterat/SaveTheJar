@@ -15,6 +15,8 @@ var MinPosY : int = -45
 var SpawnedPotions : Array = []
 var SelectedPotions : Array = []
 
+var Score : int = 0
+
 func _ready() -> void:
 	spawn_potions_on_board()
 	SpawnedPotions = get_tree().get_nodes_in_group(SpawnedPotionsGroup)
@@ -27,6 +29,7 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	potions_selection()
 	animate_movement()
+	remove_potion_form_board()
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -115,10 +118,16 @@ func get_number_of_removeable_potions() -> int:
 			number_of_removable_potions = number_of_removable_potions + 1
 	
 	return number_of_removable_potions
+
+func remove_potion_form_board() -> void:
+	for potion in SpawnedPotions:
+		if potion.IsRemoveable == true and potion.IsChosenToBeRemoved == true:
+			potion.hide_removable_potion()
+			Score = Score + 1
+			GUI.set_score(Score)
 	
 func _on_NextPotionTimer_timeout() -> void:
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
 	
 	if get_number_of_removeable_potions() < 10:
 		set_potion_to_remove()
-		GUI.set_score(4)

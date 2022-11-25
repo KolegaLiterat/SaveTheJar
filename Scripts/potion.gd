@@ -38,7 +38,7 @@ func removable_indicator_handler() -> void:
 		$NonSpriteAnimations.play("RemovablePotion")
 	elif IsChosenToBeRemoved == false:
 		$PotionBody/PotionToRmoveIndicator.hide()
-		$NonSpriteAnimations.stop("RemovablePotion")
+		$NonSpriteAnimations.stop()
 
 func move_potions(new_position : Vector2) -> void:
 	if IsMovable:
@@ -51,3 +51,10 @@ func move_potions(new_position : Vector2) -> void:
 										new_position, 1, 
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		PotionTween.start()
+
+func hide_removable_potion():
+	IsRemoveable = false
+	IsChosenToBeRemoved = false
+	$PotionBody/HealthyPotionSprite.hide()
+	
+	removable_indicator_handler()
