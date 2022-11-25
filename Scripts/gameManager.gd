@@ -101,7 +101,7 @@ func set_potions_moveable(x_diff: int, y_diff: int) -> void:
 func set_potion_to_remove() -> void:
 	var potion_to_remove: Node2D = SpawnedPotions[rand_range(0, Potions.size())]
 	
-	if potion_to_remove.IsRemoveable == true:
+	if potion_to_remove.IsRemoveable == true or potion_to_remove.IsChosenToBeRemoved == true:
 		set_potion_to_remove()
 	else:
 		potion_to_remove.IsChosenToBeRemoved = true
