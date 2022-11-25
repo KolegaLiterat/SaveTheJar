@@ -4,7 +4,7 @@ onready var BoardTilesCount : int =  get_child_count()
 var BoardTiles : Array = []
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	if !validate_tiles_count():
 		print("Missing board! Verify BOARD object!")
 	else:
@@ -36,8 +36,8 @@ func get_all_board_tiles() -> Array:
 	return board_tiles
 
 
-func _on_Endline_body_entered(body):
+func _on_Endline_body_entered(body) -> void:
 	body.get_parent().IsRemoveable = true
 
-func _on_Endline_body_exited(body):
+func _on_Endline_body_exited(body) -> void:
 	body.get_parent().IsRemoveable = false
