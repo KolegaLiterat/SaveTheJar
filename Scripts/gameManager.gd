@@ -99,15 +99,25 @@ func set_potions_moveable(x_diff: int, y_diff: int) -> void:
 				potion.IsMovable = true
 
 func set_potion_to_remove() -> void:
-	var potion_to_remove: Node2D = SpawnedPotions[rand_range(0, Potions.size())]
+	var potion_to_remove: Node2D = SpawnedPotions[rand_range(0, SpawnedPotions.size())]
 	
 	if potion_to_remove.IsRemoveable == true or potion_to_remove.IsChosenToBeRemoved == true:
 		set_potion_to_remove()
 	else:
 		potion_to_remove.IsChosenToBeRemoved = true
 		potion_to_remove.removable_indicator_handler()
+		
+func get_number_of_removeable_potions() -> int:
+	var number_of_removable_potions : int = 0 
+	
+	for potion in SpawnedPotions:
+		if potion.IsChosenToBeRemoved == true:
+			number_of_removable_potions = number_of_removable_potions + 1
+	
+	return number_of_removable_potions
 	
 func _on_NextPotionTimer_timeout() -> void:
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
-	set_potion_to_remove()
 	
+	if get_number_of_removeable_potions() < 10:
+		set_potion_to_remove()

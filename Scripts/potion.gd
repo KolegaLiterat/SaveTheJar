@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var PotionTween = get_node("Tween")
+
+#Potion States
 var IsSelected : bool = false
 var IsMovable : bool = false
 var IsRemoveable : bool = false
