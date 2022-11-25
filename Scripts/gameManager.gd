@@ -141,12 +141,13 @@ func add_new_potion():
 	new_potion.queue_free()
 	
 func _on_NextPotionTimer_timeout() -> void:
-	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
+	$NextPotionTimer.set_wait_time(rand_range(3.0, 5.0))
 	
 	if get_number_of_removeable_potions() < 10:
 		set_potion_to_remove()
 
-
 func _on_NewPotionTimer_timeout():
+	$NewPotionTimer.set_wait_time(rand_range(3.0, 10.0))
+	
 	if RemovedPotions.size() > 0:
 		add_new_potion()
