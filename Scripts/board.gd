@@ -2,6 +2,7 @@ extends Node2D
 
 onready var BoardTilesCount : int =  get_child_count()
 var BoardTiles : Array = []
+var PotionsToRemove : Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +11,6 @@ func _ready():
 	else:
 		BoardTiles = get_all_board_tiles()
 		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 	
@@ -38,5 +38,7 @@ func get_all_board_tiles() -> Array:
 
 
 func _on_Endline_body_entered(body):
-	var potion : Node2D  = body.get_parent()
-	print(potion.name)
+	PotionsToRemove.append(body.get_parent())
+
+func _on_Endline_body_exited(body):
+	PotionsToRemove.erase(body.get_parent())
