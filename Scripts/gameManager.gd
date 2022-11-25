@@ -15,7 +15,7 @@ var MinPosY : int = -45
 var SpawnedPotions : Array = []
 var SelectedPotions : Array = []
 
-func _ready():
+func _ready() -> void:
 	spawn_potions_on_board()
 	SpawnedPotions = get_tree().get_nodes_in_group(SpawnedPotionsGroup)
 	
@@ -24,7 +24,7 @@ func _ready():
 	
 	$NextPotionTimer.start()
 	
-func _process(_delta):
+func _process(_delta) -> void:
 	potions_selection()
 	animate_movement()
 	
@@ -37,7 +37,7 @@ func spawn_potions_on_board():
 		
 		$Potions.add_child(new_potion, true)
 
-func potions_selection():
+func potions_selection() -> void:
 	for potion in SpawnedPotions:
 		if potion.IsSelected == true:
 			change_potion_selection(potion)
@@ -51,7 +51,7 @@ func validate_spawn_potions_count() -> bool:
 		
 	return are_potions_spawned
 
-func change_potion_selection(selected_potion : Node):
+func change_potion_selection(selected_potion : Node) -> void:
 	if SelectedPotions.size() < 2:
 		if SelectedPotions.has(selected_potion) == false:
 			SelectedPotions.append(selected_potion)
@@ -62,7 +62,7 @@ func change_potion_selection(selected_potion : Node):
 			SelectedPotions[0] = SelectedPotions[1]
 			SelectedPotions.remove(1)
 
-func remove_unselected_potion():
+func remove_unselected_potion() -> void:
 	for potion in SelectedPotions:
 		if potion.IsSelected == false:
 			SelectedPotions.erase(potion)
@@ -99,9 +99,7 @@ func set_potions_moveable(x_diff: int, y_diff: int) -> void:
 				potion.IsMovable = true
 
 func set_potion_to_remove() -> void:
-	var potion_to_remove = SpawnedPotions[rand_range(0, Potions.size())]
-	
-	print(potion_to_remove)
+	var potion_to_remove: Node2D = SpawnedPotions[rand_range(0, Potions.size())]
 	
 	if potion_to_remove.IsRemoveable == true:
 		set_potion_to_remove()
@@ -109,7 +107,7 @@ func set_potion_to_remove() -> void:
 		potion_to_remove.IsChosenToBeRemoved = true
 		potion_to_remove.removable_indicator_handler()
 	
-func _on_NextPotionTimer_timeout():
+func _on_NextPotionTimer_timeout() -> void:
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 12.0))
 	set_potion_to_remove()
 	
