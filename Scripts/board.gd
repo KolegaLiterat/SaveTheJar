@@ -2,7 +2,6 @@ extends Node2D
 
 onready var BoardTilesCount : int =  get_child_count()
 var BoardTiles : Array = []
-var PotionsToRemove : Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,7 +37,7 @@ func get_all_board_tiles() -> Array:
 
 
 func _on_Endline_body_entered(body):
-	PotionsToRemove.append(body.get_parent())
+	body.get_parent().IsRemoveable = true
 
 func _on_Endline_body_exited(body):
-	PotionsToRemove.erase(body.get_parent())
+	body.get_parent().IsRemoveable = false

@@ -3,7 +3,6 @@ extends Node
 #Load game data
 onready var BoardTiles : Array = get_node("Board").BoardTiles
 onready var Potions : Array = get_node("Potions").Potions
-onready var PotionsToRemove : Array = get_node("Board").PotionsToRemove
 
 #Groups names
 var SpawnedPotionsGroup : String = "Spawned Potions"
