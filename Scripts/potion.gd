@@ -3,6 +3,9 @@ extends Node2D
 onready var PotionTween = get_node("Tween")
 var IsSelected : bool = false
 var IsMovable : bool = false
+var IsRemoveable : bool = false
+var IsChosenToBeRemoved : bool = false
+var IsRotten : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
