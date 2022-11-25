@@ -58,7 +58,7 @@ animation = "Selected"
 
 [node name="PotionToRmoveIndicator" type="Sprite" parent="PotionBody"]
 visible = false
-position = Vector2( 0, -30.0369 )
+position = Vector2( 0, -45 )
 scale = Vector2( 0.75, 0.75 )
 z_index = 3
 texture = ExtResource( 5 )
