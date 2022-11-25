@@ -35,3 +35,8 @@ func get_all_board_tiles() -> Array:
 		board_tiles.append(tile)
 
 	return board_tiles
+
+
+func _on_Endline_body_entered(body):
+	var potion : Node2D  = body.get_parent()
+	print(potion.name)

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/boardTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/board.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 29.7217
+height = 397.609
 
 [node name="Board" type="Node2D"]
 position = Vector2( -58, 32 )
@@ -176,3 +180,13 @@ z_index = -4
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Endline" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Endline"]
+position = Vector2( 753, 1043 )
+rotation = 1.09956
+z_as_relative = false
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Endline" to="." method="_on_Endline_body_entered"]
