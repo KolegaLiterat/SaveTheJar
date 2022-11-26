@@ -15,4 +15,4 @@ func set_score(score: int):
 	$ScoreLabel/Points.set_text(str(score))
 
 func _on_Button_pressed():
-	print("Hit")
+	IsRotPotioRemoved = true

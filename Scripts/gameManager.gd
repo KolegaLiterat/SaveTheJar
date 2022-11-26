@@ -32,7 +32,8 @@ func _process(_delta) -> void:
 	potions_selection()
 	animate_movement()
 	remove_potion_form_board()
-	#heal_rot_potion()
+	if GUI.IsRotPotioRemoved == true:
+		heal_rot_potion()
 	
 func spawn_potions_on_board():
 	for board_tile in BoardTiles:
@@ -149,8 +150,13 @@ func score_update(modificator: int):
 	GUI.set_score(Score)
 	
 func heal_rot_potion():
-	print("Go!")
 	GUI.IsRotPotioRemoved = false
+	
+	for potion in SpawnedPotions:
+		if potion.IsRotten == true:
+			potion.IsRotten = false
+			potion.rotten_indicator_hadlder()
+			break
 	
 func _on_NextPotionTimer_timeout() -> void:
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 5.0))

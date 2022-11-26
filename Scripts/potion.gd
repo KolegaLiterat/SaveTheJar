@@ -93,6 +93,8 @@ func rotten_indicator_hadlder():
 		$PotionBody/RotPotionIndicator.show()
 		$NonSpriteAnimations.play("RotPotion")
 	elif IsRotten == false:
+		$PotionBody/HealthyPotionSprite.show()
+		$PotionBody/RotPotionSprite.hide()
 		$PotionBody/RotPotionIndicator.hide()
 		$NonSpriteAnimations.stop()
 
