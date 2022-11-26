@@ -39,6 +39,7 @@ func removable_indicator_handler() -> void:
 		$RotPotion.start()
 	elif IsChosenToBeRemoved == false:
 		$PotionBody/PotionToRmoveIndicator.hide()
+		$NonSpriteAnimations.stop()
 
 func move_potions(new_position : Vector2) -> void:
 	if IsMovable:
@@ -75,7 +76,15 @@ func show_new_potion(new_texture_region: Rect2) -> void:
 	
 func run_animation_for_potion(animation_name: String):
 	$NonSpriteAnimations.play(animation_name)
-	
+
+func rotten_indicator_hadlder():
+	if IsRotten == true:
+		$PotionBody/RotPotionIndicator.show()
+		$NonSpriteAnimations.play("RotPotion")
+	elif IsRotten == false:
+		$PotionBody/RotPotionIndicator.hide()
+		$NonSpriteAnimations.stop()
+
 func _on_RotPotion_timeout():
 	IsRotten = true
 	$PotionBody/HealthyPotionSprite.hide()
@@ -84,4 +93,6 @@ func _on_RotPotion_timeout():
 	if IsChosenToBeRemoved == true:
 		IsChosenToBeRemoved = false
 		removable_indicator_handler()
+	
+	rotten_indicator_hadlder()
 	
