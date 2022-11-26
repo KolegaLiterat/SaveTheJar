@@ -220,7 +220,7 @@ anims/RemovablePotion = SubResource( 3 )
 anims/RotPotion = SubResource( 6 )
 
 [node name="RotPotion" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 
 [connection signal="input_event" from="PotionBody" to="." method="_on_PotionBody_input_event"]
 [connection signal="timeout" from="RotPotion" to="." method="_on_RotPotion_timeout"]

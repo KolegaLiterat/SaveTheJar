@@ -130,6 +130,7 @@ func remove_potion_form_board() -> void:
 			
 			Score = Score + 1
 			GUI.set_score(Score)
+			potion.stop_rot_timer()
 
 func add_new_potion():
 	var new_potion : Node = Potions[randi() % 6].instance()

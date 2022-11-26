@@ -69,7 +69,9 @@ func get_new_texture_region() -> Rect2:
 
 func show_new_potion(new_texture_region: Rect2) -> void:
 	$PotionBody/HealthyPotionSprite.set_region_rect(new_texture_region)
+	
 	$NonSpriteAnimations.play("FadeIn")
+	
 	$PotionBody/HealthyPotionSprite.modulate.a = 0
 	$PotionBody/HealthyPotionSprite.show()
 	
@@ -93,6 +95,9 @@ func transformation_animation_handler():
 	yield($PotionBody/TransformAnimation, "animation_finished")
 	
 	$PotionBody/TransformAnimation.hide()
+
+func stop_rot_timer():
+	$RotPotion.stop()
 	
 func _on_RotPotion_timeout():
 	IsRotten = true
