@@ -96,7 +96,7 @@ func animate_movement() -> void:
 		SelectedPotions[0].move_potions(SelectedPotions[1].position)
 		SelectedPotions[1].move_potions(SelectedPotions[0].position)
 		
-		score_update(rot_potion_movement_punishment())
+		score_update(SelectedPotions[0].ScoreModificator + SelectedPotions[1].ScoreModificator)
 		
 		remove_unselected_potion()
 
@@ -142,15 +142,6 @@ func add_new_potion():
 	RemovedPotions.pop_front()
 	
 	new_potion.queue_free()
-
-func rot_potion_movement_punishment() -> int:
-	var score_modificator = 0
-	
-	for potion in SelectedPotions:
-		if potion.IsRotten == true:
-			score_modificator = score_modificator + 1
-	
-	return score_modificator * -1
 
 func score_update(modificator: int):
 	Score = Score + modificator

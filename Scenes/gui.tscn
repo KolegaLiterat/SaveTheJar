@@ -105,6 +105,7 @@ custom_styles/focus = SubResource( 10 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 4 )
 disabled = true
+action_mode = 0
 
 [node name="ButtonLabel" type="Label" parent="Button"]
 margin_left = 24.0

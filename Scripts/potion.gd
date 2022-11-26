@@ -9,6 +9,9 @@ var IsRemoveable : bool = false
 var IsChosenToBeRemoved : bool = false
 var IsRotten : bool = false
 
+#Score modificator for movement:
+var ScoreModificator: int = 0
+
 func _ready() -> void:
 	pass
 
@@ -42,7 +45,12 @@ func removable_indicator_handler() -> void:
 		$NonSpriteAnimations.stop()
 
 func move_potions(new_position : Vector2) -> void:
+	ScoreModificator = 0
+	
 	if IsMovable:
+		if IsRotten == true:
+			ScoreModificator = ScoreModificator - 1
+			
 		IsSelected = false
 		IsMovable = false
 		
@@ -54,7 +62,7 @@ func move_potions(new_position : Vector2) -> void:
 		PotionTween.start()
 		
 		yield(PotionTween, "tween_completed")
-		
+			
 func hide_removable_potion():
 	IsChosenToBeRemoved = false
 	removable_indicator_handler()
