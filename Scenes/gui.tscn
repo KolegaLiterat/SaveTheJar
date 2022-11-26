@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/MOOD MKII.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/gui.gd" type="Script" id=2]
@@ -15,22 +15,6 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 3 )
-region_rect = Rect2( 24, 1703, 128, 130 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 3 )
-region_rect = Rect2( 24, 1703, 128, 129 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 3 )
-region_rect = Rect2( 24, 1703, 128, 129 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 3 )
-region_rect = Rect2( 28, 1488, 124, 125 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )
@@ -99,13 +83,10 @@ margin_left = 176.0
 margin_top = 1399.0
 margin_right = 944.0
 margin_bottom = 1623.0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 4 )
 disabled = true
 action_mode = 0
+enabled_focus_mode = 0
 
 [node name="ButtonLabel" type="Label" parent="Button"]
 margin_left = 24.0
@@ -126,3 +107,5 @@ custom_fonts/font = SubResource( 6 )
 text = "Cost: 7 points"
 align = 1
 valign = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
