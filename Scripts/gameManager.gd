@@ -107,7 +107,7 @@ func set_potion_to_remove() -> void:
 	var potion_to_remove: Node2D = SpawnedPotions[rand_range(0, SpawnedPotions.size())]
 	
 	if RemovedPotions.has(potion_to_remove) == false:
-		if potion_to_remove.IsRemoveable == true or potion_to_remove.IsChosenToBeRemoved == true:
+		if potion_to_remove.IsRemoveable == true or potion_to_remove.IsChosenToBeRemoved == true or potion_to_remove.IsRotten == true:
 			set_potion_to_remove()
 		else:
 			potion_to_remove.IsChosenToBeRemoved = true
