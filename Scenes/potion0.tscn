@@ -125,11 +125,27 @@ script = ExtResource( 2 )
 [node name="PotionBody" type="KinematicBody2D" parent="."]
 input_pickable = true
 
+[node name="RotPotionSprite" type="Sprite" parent="PotionBody"]
+visible = false
+position = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 322, 290, 14, 14 )
+
 [node name="HealthyPotionSprite" type="Sprite" parent="PotionBody"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 242, 290, 14, 14 )
+
+[node name="PotionToRmoveIndicator" type="Sprite" parent="PotionBody"]
+visible = false
+position = Vector2( 0, -45 )
+scale = Vector2( 0.75, 0.75 )
+z_index = 3
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 2012, 336, 52, 52 )
 
 [node name="PotionCollision" type="CollisionShape2D" parent="PotionBody"]
 shape = SubResource( 1 )
@@ -141,15 +157,6 @@ position = Vector2( -0.499997, 2.14577e-06 )
 scale = Vector2( 3.16667, 3.11111 )
 frames = SubResource( 2 )
 animation = "Selected"
-
-[node name="PotionToRmoveIndicator" type="Sprite" parent="PotionBody"]
-visible = false
-position = Vector2( 0, -45 )
-scale = Vector2( 0.75, 0.75 )
-z_index = 3
-texture = ExtResource( 5 )
-region_enabled = true
-region_rect = Rect2( 2012, 336, 52, 52 )
 
 [node name="Tween" type="Tween" parent="."]
 
