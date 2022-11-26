@@ -97,6 +97,7 @@ func rotten_indicator_hadlder():
 		$PotionBody/RotPotionSprite.hide()
 		$PotionBody/RotPotionIndicator.hide()
 		$NonSpriteAnimations.stop()
+		$RotPotion.stop()
 
 func transformation_animation_handler():
 	$PotionBody/TransformAnimation.show()
