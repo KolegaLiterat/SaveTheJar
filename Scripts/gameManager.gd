@@ -138,6 +138,7 @@ func add_new_potion():
 	SpawnedPotions[index_for_potion].show_new_potion(new_potion.get_new_texture_region())
 	
 	RemovedPotions.pop_front()
+	
 	new_potion.queue_free()
 	
 func _on_NextPotionTimer_timeout() -> void:

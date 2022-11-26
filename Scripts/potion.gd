@@ -36,9 +36,11 @@ func removable_indicator_handler() -> void:
 	if IsChosenToBeRemoved == true:
 		$PotionBody/PotionToRmoveIndicator.show()
 		$NonSpriteAnimations.play("RemovablePotion")
+		$RotPotion.start()
 	elif IsChosenToBeRemoved == false:
 		$PotionBody/PotionToRmoveIndicator.hide()
 		$NonSpriteAnimations.stop()
+		$RotPotion.stop()
 
 func move_potions(new_position : Vector2) -> void:
 	if IsMovable:
@@ -51,13 +53,16 @@ func move_potions(new_position : Vector2) -> void:
 										new_position, 0.5, 
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		PotionTween.start()
-
+		
+		yield(PotionTween, "tween_completed")
+		
 func hide_removable_potion():
 	IsChosenToBeRemoved = false
+	removable_indicator_handler()
+	$NonSpriteAnimations.play("FadeOut")
+	yield($NonSpriteAnimations, "animation_finished")
 	$PotionBody/HealthyPotionSprite.hide()
 	
-	removable_indicator_handler()
-
 func get_new_texture_region() -> Rect2:
 	var new_texture_region : Rect2 = $PotionBody/HealthyPotionSprite.get_region_rect()
 	
@@ -65,5 +70,13 @@ func get_new_texture_region() -> Rect2:
 
 func show_new_potion(new_texture_region: Rect2) -> void:
 	$PotionBody/HealthyPotionSprite.set_region_rect(new_texture_region)
+	$NonSpriteAnimations.play("FadeIn")
+	$PotionBody/HealthyPotionSprite.modulate.a = 0
 	$PotionBody/HealthyPotionSprite.show()
+	yield($NonSpriteAnimations, "animation_finished")
 	
+func run_animation_for_potion(animation_name: String):
+	$NonSpriteAnimations.play(animation_name)
+	
+func _on_RotPotion_timeout():
+	pass # Replace with function body.
