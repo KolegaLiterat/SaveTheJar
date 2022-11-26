@@ -95,7 +95,9 @@ func animate_movement() -> void:
 		
 		SelectedPotions[0].move_potions(SelectedPotions[1].position)
 		SelectedPotions[1].move_potions(SelectedPotions[0].position)
-			
+		
+		score_update(rot_potion_movement_punishment())
+		
 		remove_unselected_potion()
 
 func set_potions_moveable(x_diff: int, y_diff: int) -> void:
@@ -128,8 +130,7 @@ func remove_potion_form_board() -> void:
 			potion.hide_removable_potion()
 			RemovedPotions.append(potion)
 			
-			Score = Score + 1
-			GUI.set_score(Score)
+			score_update(1)
 			potion.stop_rot_timer()
 
 func add_new_potion():
@@ -141,6 +142,19 @@ func add_new_potion():
 	RemovedPotions.pop_front()
 	
 	new_potion.queue_free()
+
+func rot_potion_movement_punishment() -> int:
+	var score_modificator = 0
+	
+	for potion in SelectedPotions:
+		if potion.IsRotten == true:
+			score_modificator = score_modificator + 1
+	
+	return score_modificator * -1
+
+func score_update(modificator: int):
+	Score = Score + modificator
+	GUI.set_score(Score)
 	
 func _on_NextPotionTimer_timeout() -> void:
 	$NextPotionTimer.set_wait_time(rand_range(3.0, 5.0))
