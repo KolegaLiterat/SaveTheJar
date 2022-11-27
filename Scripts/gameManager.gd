@@ -4,7 +4,6 @@ extends Node
 onready var BoardTiles : Array = get_node("Board").BoardTiles
 onready var Potions : Array = get_node("Potions").Potions
 onready var GUI : Control = get_node("GUI")
-onready var ScoreForEndScreen = Globals.Score
 
 #Groups names
 var SpawnedPotionsGroup : String = "Spawned Potions"
@@ -37,7 +36,7 @@ func _process(_delta) -> void:
 	remove_potion_form_board()
 	
 	if get_number_of_rot_potions() == RotPotionsLimit:
-		ScoreForEndScreen = PlayerScore
+		Globals.Score = PlayerScore
 		get_tree().change_scene("res://Scenes/endScreen.tscn")
 	
 	if GUI.IsRotPotioRemoved == true:
