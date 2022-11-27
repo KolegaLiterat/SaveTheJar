@@ -7,7 +7,7 @@ func _ready():
 
 
 func _on_Restart_pressed():
-	get_tree().change_scene("res://Scenes/main.tscn")
+	Globals.ScenceChangeDebug = get_tree().change_scene("res://Scenes/main.tscn")
 
 func _on_Exit_pressed():
-	get_tree().change_scene("res://Scenes/mainMenu.tscn")
+	Globals.ScenceChangeDebug = get_tree().change_scene("res://Scenes/mainMenu.tscn")

@@ -7,7 +7,7 @@ func _process(_delta):
 	pass
 
 func _on_StartGame_pressed():
-	get_tree().change_scene("res://Scenes/main.tscn")
+	Globals.ScenceChangeDebug = get_tree().change_scene("res://Scenes/main.tscn")
 
 func _on_Exit_pressed():
 	get_tree().quit()

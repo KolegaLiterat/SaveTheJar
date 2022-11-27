@@ -25,7 +25,7 @@ func _ready() -> void:
 	SpawnedPotions = get_tree().get_nodes_in_group(SpawnedPotionsGroup)
 	
 	if !validate_spawn_potions_count():
-		print("Missing spawned potions! Check potions scence!")
+		print_debug("Missing spawned potions! Check potions scence!")
 	
 	$NextPotionTimer.start()
 	$NewPotionTimer.start()
@@ -37,7 +37,7 @@ func _process(_delta) -> void:
 	
 	if get_number_of_rot_potions() == RotPotionsLimit:
 		Globals.Score = PlayerScore
-		get_tree().change_scene("res://Scenes/endScreen.tscn")
+		Globals.ScenceChangeDebug = get_tree().change_scene("res://Scenes/endScreen.tscn")
 	
 	if GUI.IsRotPotioRemoved == true:
 		heal_rot_potion()
@@ -176,7 +176,7 @@ func get_number_of_rot_potions() -> int:
 	return rot_potions
 	
 func _on_NextPotionTimer_timeout() -> void:
-	$NextPotionTimer.set_wait_time(rand_range(2.0, 4.0))
+	$NextPotionTimer.set_wait_time(rand_range(3.0, 5.0))
 	
 	if get_number_of_removeable_potions() < 5:
 		set_potion_to_remove()
