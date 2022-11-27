@@ -15,4 +15,5 @@ func set_score(score: int) -> void:
 	$ScoreLabel/Points.set_text(str(score))
 
 func _on_Button_pressed() -> void:
+	$ClickSound.play()
 	IsRotPotioRemoved = true

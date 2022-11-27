@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/MOOD MKII Outline.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/MOOD MKII.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/Background/BaseMixed.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sounds/ok-1.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -83,6 +84,9 @@ position = Vector2( 544, 952 )
 scale = Vector2( 1.51111, 3.025 )
 z_index = -6
 texture = ExtResource( 4 )
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="pressed" from="StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]

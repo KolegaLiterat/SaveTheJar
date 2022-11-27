@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/gameItems.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/potion.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Assets/Heal Animation/HealEffect4.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Heal Animation/HealEffect7.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Heal Animation/HealEffect10.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sounds/lose-3.wav" type="AudioStream" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
@@ -246,6 +247,11 @@ anims/RotPotion = SubResource( 6 )
 
 [node name="RotPotion" type="Timer" parent="."]
 wait_time = 7.0
+
+[node name="RotPotionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+
+[node name="HealPotion" type="AudioStreamPlayer" parent="."]
 
 [connection signal="input_event" from="PotionBody" to="." method="_on_PotionBody_input_event"]
 [connection signal="timeout" from="RotPotion" to="." method="_on_RotPotion_timeout"]

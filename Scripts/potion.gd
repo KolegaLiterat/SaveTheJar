@@ -93,6 +93,7 @@ func rotten_indicator_hadlder():
 	if IsRotten == true:
 		$PotionBody/RotPotionIndicator.show()
 		$NonSpriteAnimations.play("RotPotion")
+		$RotPotion.stop()
 	elif IsRotten == false:
 		heal_potion()
 		$PotionBody/RotPotionIndicator.hide()
@@ -113,6 +114,7 @@ func heal_potion() -> void:
 	
 	$PotionBody/HealAnimation.show()
 	$PotionBody/HealAnimation.play("HealAnimation")
+	$HealPotion.play()
 	yield($PotionBody/HealAnimation, "animation_finished")
 	$PotionBody/HealAnimation.hide()	
 	
@@ -131,7 +133,9 @@ func rot_potion() -> void:
 	
 	rotten_indicator_hadlder()
 	transformation_animation_handler()
+	$RotPotionSound.play()
+	
+	yield($RotPotionSound, "finished")
 	
 func _on_RotPotion_timeout() -> void:
 	rot_potion()
-	

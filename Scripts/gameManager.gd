@@ -123,6 +123,7 @@ func set_potion_to_remove() -> void:
 		else:
 			potion_to_remove.IsChosenToBeRemoved = true
 			potion_to_remove.removable_indicator_handler()
+			$NewPotionToRemove.play()
 		
 func get_number_of_removeable_potions() -> int:
 	var number_of_removable_potions : int = 0 
@@ -140,6 +141,7 @@ func remove_potion_form_board() -> void:
 			RemovedPotions.append(potion)
 			
 			score_update(1)
+			$ScoreUpdate.play()
 			potion.stop_rot_timer()
 
 func add_new_potion():
@@ -151,6 +153,7 @@ func add_new_potion():
 	RemovedPotions.pop_front()
 	
 	new_potion.queue_free()
+	$NewPotionAppears.play()
 
 func score_update(modificator: int) -> void:
 	PlayerScore = PlayerScore + modificator
