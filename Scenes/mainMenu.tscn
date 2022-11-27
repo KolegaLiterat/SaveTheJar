@@ -1,15 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/MOOD MKII Outline.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/MOOD MKII.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 3 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -24,13 +33,49 @@ margin_bottom = 632.0
 custom_fonts/font = SubResource( 1 )
 text = "Start Game"
 
+[node name="Credits" type="Button" parent="."]
+margin_left = 256.0
+margin_top = 672.0
+margin_right = 832.0
+margin_bottom = 856.0
+custom_fonts/font = SubResource( 3 )
+text = "Credits"
+
 [node name="Exit" type="Button" parent="."]
 margin_left = 256.0
-margin_top = 664.0
+margin_top = 896.0
 margin_right = 832.0
-margin_bottom = 848.0
+margin_bottom = 1080.0
 custom_fonts/font = SubResource( 2 )
 text = "Quit"
 
+[node name="CreditsWindow" type="WindowDialog" parent="."]
+margin_left = 8.0
+margin_top = 64.0
+margin_right = 1080.0
+margin_bottom = 1208.0
+
+[node name="CreditsText" type="RichTextLabel" parent="CreditsWindow"]
+margin_left = 8.0
+margin_right = 1072.0
+margin_bottom = 1144.0
+custom_fonts/normal_font = SubResource( 4 )
+tab_size = 2
+text = "Design and programming:
+Adrian \"Kolega Literat\" Jaworek
+
+Potions: Blodyavenger
+
+Board Tiles: EDslashEM
+
+Animations: 	Abdulla Almheiri
+
+Sounds: Beep Yeah!
+
+Font: BSL
+"
+scroll_active = false
+
 [connection signal="pressed" from="StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
