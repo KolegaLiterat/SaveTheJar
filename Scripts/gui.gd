@@ -6,9 +6,9 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if int($ScoreLabel/Points.text) >= 1:
+	if int($ScoreLabel/Points.text) >= 7:
 		$Button.disabled = false
-	if int($ScoreLabel/Points.text) <= 0:
+	if int($ScoreLabel/Points.text) < 7:
 		$Button.disabled = true
 	
 func set_score(score: int):

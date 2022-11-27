@@ -156,6 +156,7 @@ func heal_rot_potion():
 		if potion.IsRotten == true:
 			potion.IsRotten = false
 			potion.rotten_indicator_hadlder()
+			score_update(-7)
 			break
 	
 func _on_NextPotionTimer_timeout() -> void:
