@@ -4,6 +4,8 @@ extends Node
 onready var BoardTiles : Array = get_node("Board").BoardTiles
 onready var Potions : Array = get_node("Potions").Potions
 onready var GUI : Control = get_node("GUI")
+onready var ScoreForEndScreen = Globals.Score
+
 #Groups names
 var SpawnedPotionsGroup : String = "Spawned Potions"
 
@@ -16,7 +18,8 @@ var SpawnedPotions : Array = []
 var SelectedPotions : Array = []
 var RemovedPotions : Array = []
 
-var Score : int = 0
+var PlayerScore : int = 0
+var RotPotionsLimit : int = 3
 
 func _ready() -> void:
 	spawn_potions_on_board()
@@ -32,6 +35,11 @@ func _process(_delta) -> void:
 	potions_selection()
 	animate_movement()
 	remove_potion_form_board()
+	
+	if get_number_of_rot_potions() == RotPotionsLimit:
+		ScoreForEndScreen = PlayerScore
+		get_tree().change_scene("res://Scenes/endScreen.tscn")
+	
 	if GUI.IsRotPotioRemoved == true:
 		heal_rot_potion()
 	
@@ -145,11 +153,11 @@ func add_new_potion():
 	
 	new_potion.queue_free()
 
-func score_update(modificator: int):
-	Score = Score + modificator
-	GUI.set_score(Score)
+func score_update(modificator: int) -> void:
+	PlayerScore = PlayerScore + modificator
+	GUI.set_score(PlayerScore)
 	
-func heal_rot_potion():
+func heal_rot_potion() -> void:
 	GUI.IsRotPotioRemoved = false
 	
 	for potion in SpawnedPotions:
@@ -158,15 +166,24 @@ func heal_rot_potion():
 			potion.rotten_indicator_hadlder()
 			score_update(-7)
 			break
+
+func get_number_of_rot_potions() -> int:
+	var rot_potions: int = 0
+	
+	for potion in SpawnedPotions:
+		if potion.IsRotten == true:
+			rot_potions = rot_potions + 1
+	
+	return rot_potions
 	
 func _on_NextPotionTimer_timeout() -> void:
-	$NextPotionTimer.set_wait_time(rand_range(3.0, 5.0))
+	$NextPotionTimer.set_wait_time(rand_range(2.0, 5.0))
 	
-	if get_number_of_removeable_potions() < 10:
+	if get_number_of_removeable_potions() < 5:
 		set_potion_to_remove()
 
 func _on_NewPotionTimer_timeout():
-	$NewPotionTimer.set_wait_time(rand_range(3.0, 10.0))
+	$NewPotionTimer.set_wait_time(rand_range(3.0, 8.0))
 	
 	if RemovedPotions.size() > 0:
 		add_new_potion()

@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/endScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/MOOD MKII Outline.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/MOOD MKII.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="EndScreen" type="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_bottom = 1920.0
+script = ExtResource( 1 )
+
+[node name="YourScore" type="Label" parent="."]
+margin_left = -524.0
+margin_top = 432.0
+margin_right = 546.0
+margin_bottom = 572.0
+custom_fonts/font = SubResource( 1 )
+text = "Your score was"
+align = 1
+valign = 1
+
+[node name="Score" type="Label" parent="YourScore"]
+margin_left = 304.0
+margin_top = 112.0
+margin_right = 744.0
+margin_bottom = 208.0
+custom_fonts/font = SubResource( 2 )
+text = "{NULL}"
+align = 1
+valign = 1
+
+[node name="Restart" type="Button" parent="."]
+margin_left = -476.0
+margin_top = 704.0
+margin_right = -28.0
+margin_bottom = 824.0
+custom_fonts/font = SubResource( 3 )
+text = "Restart Game"
+
+[node name="Exit" type="Button" parent="."]
+margin_left = 36.0
+margin_top = 704.0
+margin_right = 484.0
+margin_bottom = 824.0
+custom_fonts/font = SubResource( 4 )
+text = "Exit"
+
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

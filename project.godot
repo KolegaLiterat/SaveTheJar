@@ -14,6 +14,10 @@ config/name="Save the Jar"
 run/main_scene="res://Scenes/mainMenu.tscn"
 config/icon="res://Assets/icon.png"
 
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
+
 [display]
 
 window/size/width=1080
