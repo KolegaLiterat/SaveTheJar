@@ -18,7 +18,7 @@ var SelectedPotions : Array = []
 var RemovedPotions : Array = []
 
 var PlayerScore : int = 0
-var RotPotionsLimit : int = 3
+var RotPotionsLimit : int = 10
 
 func _ready() -> void:
 	spawn_potions_on_board()
@@ -176,13 +176,13 @@ func get_number_of_rot_potions() -> int:
 	return rot_potions
 	
 func _on_NextPotionTimer_timeout() -> void:
-	$NextPotionTimer.set_wait_time(rand_range(2.0, 5.0))
+	$NextPotionTimer.set_wait_time(rand_range(2.0, 4.0))
 	
 	if get_number_of_removeable_potions() < 5:
 		set_potion_to_remove()
 
 func _on_NewPotionTimer_timeout():
-	$NewPotionTimer.set_wait_time(rand_range(3.0, 8.0))
+	$NewPotionTimer.set_wait_time(rand_range(3.0, 6.0))
 	
 	if RemovedPotions.size() > 0:
 		add_new_potion()
