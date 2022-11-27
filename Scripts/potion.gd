@@ -1,5 +1,6 @@
 extends Node2D
 
+#Tween for potion
 onready var PotionTween = get_node("Tween")
 
 #Potion States
@@ -63,11 +64,14 @@ func move_potions(new_position : Vector2) -> void:
 		
 		yield(PotionTween, "tween_completed")
 			
-func hide_removable_potion():
+func hide_removable_potion() -> void:
 	IsChosenToBeRemoved = false
+	
 	removable_indicator_handler()
+	
 	$NonSpriteAnimations.play("FadeOut")
 	yield($NonSpriteAnimations, "animation_finished")
+	
 	$PotionBody/HealthyPotionSprite.hide()
 	
 func get_new_texture_region() -> Rect2:
@@ -84,22 +88,17 @@ func show_new_potion(new_texture_region: Rect2) -> void:
 	$PotionBody/HealthyPotionSprite.show()
 	
 	yield($NonSpriteAnimations, "animation_finished")
-	
-func run_animation_for_potion(animation_name: String):
-	$NonSpriteAnimations.play(animation_name)
 
 func rotten_indicator_hadlder():
 	if IsRotten == true:
 		$PotionBody/RotPotionIndicator.show()
 		$NonSpriteAnimations.play("RotPotion")
 	elif IsRotten == false:
-		$PotionBody/HealthyPotionSprite.show()
-		$PotionBody/RotPotionSprite.hide()
+		heal_potion()
 		$PotionBody/RotPotionIndicator.hide()
 		$NonSpriteAnimations.stop()
-		$RotPotion.stop()
-
-func transformation_animation_handler():
+		
+func transformation_animation_handler() -> void:
 	$PotionBody/TransformAnimation.show()
 	$PotionBody/TransformAnimation.play("Transformation")
 	
@@ -107,11 +106,17 @@ func transformation_animation_handler():
 	
 	$PotionBody/TransformAnimation.hide()
 
-func stop_rot_timer():
+func heal_potion() -> void:
 	$RotPotion.stop()
+	$PotionBody/HealthyPotionSprite.show()
+	$PotionBody/RotPotionSprite.hide()
 	
-func _on_RotPotion_timeout():
+func stop_rot_timer() -> void:
+	$RotPotion.stop()
+
+func rot_potion() -> void:
 	IsRotten = true
+	
 	$PotionBody/HealthyPotionSprite.hide()
 	$PotionBody/RotPotionSprite.show()
 	
@@ -122,4 +127,6 @@ func _on_RotPotion_timeout():
 	rotten_indicator_hadlder()
 	transformation_animation_handler()
 	
+func _on_RotPotion_timeout() -> void:
+	rot_potion()
 	

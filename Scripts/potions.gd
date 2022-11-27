@@ -4,9 +4,8 @@ onready var PotionsCount : int =  get_child_count()
 var Potions : Array = []
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	Potions = preload_potion_scenes()
-
 
 func preload_potion_scenes() -> Array:
 	var potions : Array = []
