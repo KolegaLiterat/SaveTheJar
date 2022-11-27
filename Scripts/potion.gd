@@ -111,6 +111,11 @@ func heal_potion() -> void:
 	$PotionBody/HealthyPotionSprite.show()
 	$PotionBody/RotPotionSprite.hide()
 	
+	$PotionBody/HealAnimation.show()
+	$PotionBody/HealAnimation.play("HealAnimation")
+	yield($PotionBody/HealAnimation, "animation_finished")
+	$PotionBody/HealAnimation.hide()	
+	
 func stop_rot_timer() -> void:
 	$RotPotion.stop()
 
