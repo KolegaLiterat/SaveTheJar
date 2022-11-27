@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/endScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/MOOD MKII Outline.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/MOOD MKII.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Background/BaseMixed.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -61,6 +62,12 @@ margin_right = 484.0
 margin_bottom = 824.0
 custom_fonts/font = SubResource( 4 )
 text = "Exit"
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 4, 960 )
+scale = Vector2( 1.51111, 3.025 )
+z_index = -6
+texture = ExtResource( 4 )
 
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
