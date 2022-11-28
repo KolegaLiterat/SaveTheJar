@@ -34,40 +34,50 @@ margin_top = 432.0
 margin_right = 546.0
 margin_bottom = 572.0
 custom_fonts/font = SubResource( 1 )
-text = "Your score was"
+text = "You Saved
+
+Potions"
 align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="YourScore"]
-margin_left = 304.0
-margin_top = 112.0
-margin_right = 744.0
-margin_bottom = 208.0
+margin_left = 324.0
+margin_top = 137.0
+margin_right = 764.0
+margin_bottom = 277.0
 custom_fonts/font = SubResource( 2 )
 text = "{NULL}"
 align = 1
 valign = 1
 
 [node name="Restart" type="Button" parent="."]
-margin_left = -476.0
-margin_top = 704.0
-margin_right = -28.0
-margin_bottom = 824.0
+margin_left = -452.0
+margin_top = 858.0
+margin_right = -4.0
+margin_bottom = 978.0
 custom_fonts/font = SubResource( 3 )
 text = "Restart Game"
 
 [node name="Exit" type="Button" parent="."]
-margin_left = 36.0
-margin_top = 704.0
-margin_right = 484.0
-margin_bottom = 824.0
+margin_left = -212.0
+margin_top = 1000.0
+margin_right = 236.0
+margin_bottom = 1120.0
 custom_fonts/font = SubResource( 4 )
 text = "Exit"
 
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 28.0
+margin_top = 858.0
+margin_right = 476.0
+margin_bottom = 978.0
+custom_fonts/font = SubResource( 4 )
+text = "Main Menu"
+
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 4, 960 )
+position = Vector2( 4, 968 )
 scale = Vector2( 1.51111, 3.025 )
-z_index = -6
+z_index = -8
 texture = ExtResource( 4 )
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
@@ -75,3 +85,4 @@ stream = ExtResource( 5 )
 
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

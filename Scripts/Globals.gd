@@ -1,4 +1,4 @@
 extends Node
 
-var Score: int
+var SavedPotions: int = 0
 var ScenceChangeDebug

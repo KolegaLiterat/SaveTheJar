@@ -36,7 +36,6 @@ func _process(_delta) -> void:
 	remove_potion_form_board()
 	
 	if get_number_of_rot_potions() == RotPotionsLimit:
-		Globals.Score = PlayerScore
 		Globals.ScenceChangeDebug = get_tree().change_scene("res://Scenes/endScreen.tscn")
 	
 	if GUI.IsRotPotioRemoved == true:
@@ -141,6 +140,7 @@ func remove_potion_form_board() -> void:
 			RemovedPotions.append(potion)
 			
 			score_update(1)
+			Globals.SavedPotions = Globals.SavedPotions + 1
 			$ScoreUpdate.play()
 			potion.stop_rot_timer()
 
