@@ -6,6 +6,8 @@ I made it!
 
 The game itself is simple. You, as a player, need to take out the chosen jar* (it will have a hearth above it). For every saved jar, you will get 1 point. But beware! You have only five seconds to move jar out of the board.  Otherwise, it will rot and if you move it, you will lose 1 point. You can spend 5 points to heal the last rotten jar.
 
+Here you can find a [gameplay presentation](https://youtu.be/-55YscCX62k).
+
 You may encounter some bugs ;)
 
 *I didn't have any jars in my asset library, so I decided to use potions.
