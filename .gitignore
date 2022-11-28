@@ -13,4 +13,6 @@ data_*/
 
 # Folder ignores
 Assets/
-WebBuild
+WebBuild/
+WinBuild/
+MacBuild/
