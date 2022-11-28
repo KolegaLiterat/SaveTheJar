@@ -13,10 +13,10 @@ You may encounter some bugs ;)
 
 ## Credits:
 
-Design and programming: Adrian "Kolega Literat" Jaworek
-Potions: (Blodyavenger)[https://blodyavenger.itch.io/rpg-items-retro-pack]
-Board Tiles: (EDslashEM)[https://edslashem.itch.io/rpg-asset-pack-2]
-Animations: (Abdulla Almheiri)[https://abdulla-almheiri.itch.io/3-holy-spells-mini-pack]
-Sounds: (Beep Yeah!)[https://beepyeah.itch.io/8-bit-sfx-pack]
-Font: (BSL)[https://bsl.itch.io/mood-font-set]
-Background: (aamatnieks)[https://aamatniekss.itch.io/sci-fi-space-background-set]
+- Design and programming: Adrian "Kolega Literat" Jaworek
+- Potions: [Blodyavenger](https://blodyavenger.itch.io/rpg-items-retro-pack])
+- Board Tiles: [EDslashEM](https://edslashem.itch.io/rpg-asset-pack-2)
+- Animations: [Abdulla Almheiri](https://abdulla-almheiri.itch.io/3-holy-spells-mini-pack)
+- Sounds: [Beep Yeah!](https://beepyeah.itch.io/8-bit-sfx-pack)
+- Font: [BSL](https://bsl.itch.io/mood-font-set)
+- Background: [aamatnieks](https://aamatniekss.itch.io/sci-fi-space-background-set)
