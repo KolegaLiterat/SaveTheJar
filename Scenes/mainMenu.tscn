@@ -76,7 +76,7 @@ Sounds: Beep Yeah!
 
 Font: BSL
 
-Backgournd: aamatniekss"
+Background: aamatniekss"
 scroll_active = false
 
 [node name="Background" type="Sprite" parent="."]

@@ -166,7 +166,7 @@ func heal_rot_potion() -> void:
 		if potion.IsRotten == true:
 			potion.IsRotten = false
 			potion.rotten_indicator_hadlder()
-			score_update(-7)
+			score_update(-5)
 			break
 
 func get_number_of_rot_potions() -> int:
@@ -179,7 +179,7 @@ func get_number_of_rot_potions() -> int:
 	return rot_potions
 	
 func _on_NextPotionTimer_timeout() -> void:
-	$NextPotionTimer.set_wait_time(rand_range(2.0, 5.0))
+	$NextPotionTimer.set_wait_time(rand_range(1.0, 4.0))
 	
 	if get_number_of_removeable_potions() < 5:
 		set_potion_to_remove()
