@@ -10,9 +10,12 @@ config_version=4
 
 [application]
 
-config/name="Save the Jar"
+config/name="Save the Jar!"
+config/description="Sometimes jars rot in the fridge..."
 run/main_scene="res://Scenes/mainMenu.tscn"
 config/icon="res://Assets/icon.png"
+config/macos_native_icon="res://Assets/icon.icns"
+config/windows_native_icon="res://Assets/icon.ico"
 
 [autoload]
 
